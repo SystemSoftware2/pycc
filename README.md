@@ -167,7 +167,6 @@ void main() {
 
 А вывод:
 ```
-Execution finished
 fibonacci of 10: 55
 ````
 Вот так вот. В принципе я всё показал.
