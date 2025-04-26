@@ -124,7 +124,6 @@ class VirtualMachine:
             elif op == HALT:
                 break
 
-        print('Execution finished')
         try:
             env['stdout'] = env['stdout'][1:]
         except:
