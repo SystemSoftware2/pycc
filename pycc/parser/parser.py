@@ -175,7 +175,7 @@ class Parser:
                 condition = self.paren_expr(toks)
                 self.pos += 1
                 if toks[self.pos][0] == '{':
-                    block = []
+                    blockrm = []
                     self.pos += 1
                     while self.pos < len(toks):
                         if toks[self.pos][0] == '}':
@@ -183,7 +183,7 @@ class Parser:
                             break
                         parserj = Parser()
                         res = parserj.parse(toks[self.pos:], block=True)
-                        block.append(res[0])
+                        blockrm.append(res[0])
                         self.pos += res[1] + 1
                     self.pos -= 1
                     if block == True:
@@ -202,11 +202,11 @@ class Parser:
                                     blockr.append(res[0])
                                     self.pos += res[1] + 1
                                 self.pos -= 1
-                                return ([Node('else', condition, block, blockr)], self.pos)
+                                return ([Node('else', condition, blockrm, blockr)], self.pos)
                         else:
                             self.pos -= 1
-                        return ([Node('if', condition, block, None)], self.pos)
-                    ast.append(Node('if', condition, block, None))
+                        return ([Node('if', condition, blockrm, None)], self.pos)
+                    ast.append(Node('if', condition, blockrm, None))
                 else:
                     raise SyntaxError('invalid syntax')
             elif token[0] == 'else':
