@@ -103,7 +103,7 @@ class Parser:
                         condition = self.paren_expr(toks)
                         self.pos += 1
                         if toks[self.pos][0] == ';':
-                            if block:
+                            if block == True:
                                 return ([Node('do', condition, blockrr, None)], self.pos)
                             ast.append(Node('do', condition, blockrr, None))
                         else:
@@ -186,9 +186,9 @@ class Parser:
                         block.append(res[0])
                         self.pos += res[1] + 1
                     self.pos -= 1
-                    if block:
+                    if block == True:
                         self.pos += 1
-                        if toks[self.pos][0] == 'else':
+                        if self.pos < len(toks) and toks[self.pos][0] == 'else':
                             self.pos += 1
                             if toks[self.pos][0] == '{':
                                 blockr = []
@@ -203,6 +203,8 @@ class Parser:
                                     self.pos += res[1] + 1
                                 self.pos -= 1
                                 return ([Node('else', condition, block, blockr)], self.pos)
+                        else:
+                            self.pos -= 1
                         return ([Node('if', condition, block, None)], self.pos)
                     ast.append(Node('if', condition, block, None))
                 else:
