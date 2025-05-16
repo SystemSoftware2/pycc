@@ -78,14 +78,14 @@ class VirtualMachine:
                 stack.pop()
                 pc += 1
             elif op == LT:
-                if stack[-2] <= stack[-1]:
+                if stack[-2] < stack[-1]:
                     stack[-2] = 1
                 else:
                     stack[-2] = 0
                 stack.pop()
                 pc += 1
             elif op == GT:
-                if stack[-2] >= stack[-1]:
+                if stack[-2] > stack[-1]:
                     stack[-2] = 1
                 else:
                     stack[-2] = 0
