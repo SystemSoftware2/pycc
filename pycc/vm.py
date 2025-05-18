@@ -1,4 +1,4 @@
-FETCH, STORE, ASTORE, PUSH, POP, ADD, SUB, MUL, DIV, LT, GT, EQ, NOTEQ, JZ, JNZ, JMP, HALT = range(17)
+FETCH, STORE, ASTORE, PUSH, ADD, SUB, MUL, DIV, LT, GT, EQ, NOTEQ, JZ, JNZ, JMP, HALT = range(16)
 
 class VirtualMachine:
     def __init__(self):
@@ -103,10 +103,6 @@ class VirtualMachine:
                     stack[-2] = 1
                 else:
                     stack[-2] = 0
-                stack.pop()
-                pc += 1
-            elif op == POP:
-                stack.append(arg)
                 stack.pop()
                 pc += 1
             elif op == JZ:
