@@ -21,9 +21,9 @@ class VirtualMachine:
                     if env[arg]:
                         stack.append(env[arg])
                     else:
-                        stack.append(0)
+                        raise NameError('variable not found')
                 except:
-                    stack.append(0)
+                    raise NameError('variable not found')
                 pc += 2
             elif op == STORE:
                 if arg in env:
