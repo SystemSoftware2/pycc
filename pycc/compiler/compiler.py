@@ -1,4 +1,4 @@
-FETCH, STORE, ASTORE, PUSH, POP, ADD, SUB, MUL, DIV, LT, GT, EQ, NOTEQ, JZ, JNZ, JMP, HALT = range(17)
+FETCH, STORE, ASTORE, PUSH, ADD, SUB, MUL, DIV, LT, GT, EQ, NOTEQ, JZ, JNZ, JMP, HALT = range(16)
 
 class Node:
     def __init__(self, name, op1, op2, op3):
